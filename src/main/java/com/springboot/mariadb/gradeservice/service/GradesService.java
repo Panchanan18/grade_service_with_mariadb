@@ -24,7 +24,7 @@ public class GradesService {
     public StudentResponse uploadGrades(Grades grades) {
         StudentResponse  studentResponse = new StudentResponse();
         Grades savedGrades = gradesRepo.save(grades);
-        Student student = restTemplate.getForObject("http://localhost:8083/student/getById/" + savedGrades.getStudentId(), Student.class);
+        Student student = restTemplate.getForObject("http://STUDENT-SERVICE/student/getById/" + savedGrades.getStudentId(), Student.class);
         studentResponse.setStudent(student);
         studentResponse.setGradeList(Collections.singletonList(savedGrades));
         return studentResponse;
